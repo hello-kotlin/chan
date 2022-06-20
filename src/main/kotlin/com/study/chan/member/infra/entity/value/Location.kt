@@ -1,6 +1,6 @@
 package com.study.chan.member.infra.entity.value
 
-import com.study.chan.member.domain.LocationValue
+import com.study.chan.member.domain.value.LocationValue
 import javax.persistence.Column
 import javax.persistence.Embeddable
 

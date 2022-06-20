@@ -8,6 +8,7 @@ import javax.persistence.Access
 import javax.persistence.AccessType
 import javax.persistence.Column
 import javax.persistence.Embedded
+import javax.persistence.EmbeddedId
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -23,10 +24,8 @@ import org.hibernate.annotations.Where
 @SQLDelete(sql = MemberEntity.SQL_DELETE, check = ResultCheckStyle.COUNT)
 @Access(AccessType.FIELD)
 class MemberEntity(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = Col.id)
-    override val id: Long = 0L,
+    @EmbeddedId
+    override val id: MemberId = MemberId(),
     @Column(name = Col.email)
     override var email: String,
     @Column(name = Col.password)
@@ -54,7 +53,7 @@ class MemberEntity(
         const val TABLE_NAME = "member"
         const val SQL_DELETE = "${SqlDelete.HEAD}$TABLE_NAME${SqlDelete.TAIL}"
 
-        fun createMember(email: String, username: String, password: String): MemberEntity =
+        fun create(email: String, username: String, password: String): MemberEntity =
             MemberEntity(
                 email = email,
                 username = username,

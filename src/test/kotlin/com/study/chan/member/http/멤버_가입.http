@@ -1,0 +1,8 @@
+POST localhost:8080/member
+Content-Type: application/json
+
+{
+  "email": "test@naver.com",
+  "username": "test!!",
+  "password": "12345"
+}

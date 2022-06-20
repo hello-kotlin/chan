@@ -1,0 +1,14 @@
+spring.config.activate.on-profile:
+  - local
+  - development
+server:
+  error:
+    include-exception: true
+    include-stacktrace: always
+logging:
+  level:
+    com.com.study: info
+    com.zaxxer.hikari.HikariConfig: debug
+    org.hibernate:
+      SQL: debug
+      type.descriptor.sql.BasicBinder: trace

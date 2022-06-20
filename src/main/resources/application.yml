@@ -1,0 +1,11 @@
+module-properties:
+  core: application-core.yml
+  db: application-db.yml
+  log: application-log.yml
+
+spring:
+  config:
+    import:
+      - "${module-properties.core}"
+      - "${module-properties.db}"
+      - "${module-properties.log}"

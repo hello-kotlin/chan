@@ -17,7 +17,7 @@ buildscript {
 	}
 }
 
-group = "com.study.chan"
+group = "com.study"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
@@ -40,6 +40,14 @@ dependencies {
 		exclude(module = Libs.SpringBoots.Excludes.junit)
 		exclude(module = Libs.SpringBoots.Excludes.mockitoCore)
 	}
+
+	/** test **/
+	testImplementation(Libs.Test.kotestRunner)
+	testImplementation(Libs.Test.kotestAssertion)
+	testImplementation(Libs.Test.kotestExtension)
+	testImplementation(Libs.Test.kotestStringExtension)
+	testImplementation(Libs.Test.mockk)
+	testImplementation(Libs.Database.h2)
 	/** kotlin **/
 	implementation(Libs.Kotlin.jacksonModule)
 	implementation(Libs.Kotlin.reflect)
@@ -47,7 +55,7 @@ dependencies {
 	implementation(Libs.Kotlin.logging)
 	kapt(Libs.SpringBoots.configuration)
 	/** db **/
-	implementation(Libs.Database.mysql)
+	implementation(Libs.Database.h2)
 	kapt(Libs.Kapt.queryDsl)
 	if(project.hasProperty(Profiles.profile)) {
 		if(project.property(Profiles.profile).toString() == Profiles.local) {
@@ -69,8 +77,8 @@ tasks.withType<Test> {
 
 noArg {
 	annotation(Annotation.entity)
-	annotation(Annotation.mappedSuperclass)
-	annotation(Annotation.embeddable)
+//	annotation(Annotation.mappedSuperclass)
+//	annotation(Annotation.embeddable)
 }
 
 allOpen {

@@ -5,9 +5,9 @@ import org.springframework.transaction.annotation.Transactional
 
 @Transactional
 interface CommandRepository<E, ID : Serializable> {
-    fun create(entity: E)
+    fun create(entity: E): E
     fun createAll(entities: Iterable<E>)
-    fun update(entity: E)
+    fun update(entity: E) :E
     fun updateAll(entities: Iterable<E>)
     fun delete(entity: E)
     fun deleteAll(entities: Iterable<E>)

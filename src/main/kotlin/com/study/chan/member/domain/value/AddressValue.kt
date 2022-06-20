@@ -1,4 +1,4 @@
-package com.study.chan.member.domain
+package com.study.chan.member.domain.value
 
 interface AddressValue {
     val zipCode: String?

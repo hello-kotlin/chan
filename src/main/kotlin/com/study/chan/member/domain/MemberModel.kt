@@ -1,7 +1,11 @@
 package com.study.chan.member.domain
 
-interface MemberModel {
-    val id: Long
+import com.study.chan.common.model.AuditableModel
+import com.study.chan.member.domain.value.AddressValue
+import com.study.chan.member.domain.value.LocationValue
+
+interface MemberModel : AuditableModel {
+    val id: MemberModelId
     val email: String
     val password: String
     val username: String
@@ -10,7 +14,6 @@ interface MemberModel {
     val location: LocationValue?
 
     interface Editor : MemberModel {
-        override val id: Long
         override val email: String
         override val password: String
         override val username: String

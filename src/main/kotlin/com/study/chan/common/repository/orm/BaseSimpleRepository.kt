@@ -9,11 +9,11 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 class BaseSimpleRepository<E, ID : Serializable>(entityInformation: JpaEntityInformation<E, *>, entityManager: EntityManager)
     : SimpleJpaRepository<E, ID>(entityInformation, entityManager), BaseJpaRepository<E, ID> {
 
-    override fun create(entity: E) { super.save(entity) }
+    override fun create(entity: E): E = super.save(entity)
 
     override fun createAll(entities: Iterable<E>) { super.saveAll(entities) }
 
-    override fun update(entity: E) { super.save(entity) }
+    override fun update(entity: E): E = super.save(entity)
 
     override fun updateAll(entities: Iterable<E>) { super.saveAll(entities) }
 
